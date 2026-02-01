@@ -1,9 +1,9 @@
 const explorer = document.getElementById("explorer");
-const API_URL = "https://us-central1-tu-proyecto.cloudfunctions.net/api";
 
 async function loadFolder(id = "root") {
-  const res = await fetch(`http://localhost:3000/api/folder/${id}`);
+  // const res = await fetch(`http://localhost:3000/api/folder/${id}`);
   //const res = await fetch(`${API_URL}/folder/root`);
+  const res = await fetch(`/api/folder/${id}`);
 
   const data = await res.json();
 
