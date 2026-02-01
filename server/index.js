@@ -20,6 +20,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../index.html"));
+});
 
 /**
  * Test
@@ -78,9 +81,14 @@ app.get("/api/file/:id/download", async (req, res) => {
 
   const data = await s3.send(command);
 
+  // res.setHeader(
+  //   "Content-Disposition",
+  //   `attachment; filename="${file.name}"`
+  // );
+  res.setHeader("Content-Type", "application/pdf");
   res.setHeader(
     "Content-Disposition",
-    `attachment; filename="${file.name}"`
+    `inline; filename="${file.name}"`
   );
 
   data.Body.pipe(res);

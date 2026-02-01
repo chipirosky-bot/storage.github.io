@@ -54,7 +54,8 @@ async function loadFolder(id = "root") {
 
 function downloadFile(fileId) {
   //window.location.href = `${API_URL}/file/${fileId}/download`;
-    window.location.href = `http://localhost:3000/api/file/${fileId}/download`
+   // window.location.href = `http://localhost:3000/api/file/${fileId}/download`
+  window.open(`/api/file/${fileId}/open`, "_blank");
 
 }
 
