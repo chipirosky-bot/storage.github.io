@@ -13,7 +13,7 @@ async function loadFolder(id = "root") {
     const div = document.createElement("div");
     div.className = "item folder";
     div.innerHTML = `
-        <img src="public\\assets\\directory_open_cool-0.png" />
+        <img src="assets\\directory_open_cool-0.png" />
         <span>..</span>
     `;
     if(id.parent_id == "NULL"){
@@ -30,7 +30,7 @@ async function loadFolder(id = "root") {
     const div = document.createElement("div");
     div.className = "item folder";
     div.innerHTML = `
-      <img src="public\\assets\\directory_open_file_mydocs-5.png" />
+      <img src="assets\\directory_open_file_mydocs-5.png" />
       <span>${folder.name}</span>
     `;
     div.onclick = () => loadFolder(folder.id);
@@ -41,7 +41,7 @@ async function loadFolder(id = "root") {
     const div = document.createElement("div");
     div.className = "item file";
     div.innerHTML = `
-      <img src="public\\assets\\font_bitmap-0.png" />
+      <img src="assets\\font_bitmap-0.png" />
       <span>${file.name}</span>
     `;
     explorer.appendChild(div);
