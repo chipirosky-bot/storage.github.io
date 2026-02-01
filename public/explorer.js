@@ -22,6 +22,12 @@ async function loadFolder(id = "root") {
     else{
         div.onclick = () => loadFolder(id.parent_id);
     }
+    div.onmouseenter = () => {
+        div.classList.add("selected")
+    };
+    div.onmouseleave = () => {
+        div.classList.remove("selected")
+    };
     
     explorer.appendChild(div);
   }
@@ -35,6 +41,12 @@ async function loadFolder(id = "root") {
     `;
     div.onclick = () => loadFolder(folder.id);
     explorer.appendChild(div);
+    div.onmouseenter = () => {
+        div.classList.add("selected")
+    };
+    div.onmouseleave = () => {
+        div.classList.remove("selected")
+    };
   });
 
   data.files.forEach(file => {
@@ -47,6 +59,12 @@ async function loadFolder(id = "root") {
     explorer.appendChild(div);
     div.ondblclick = () => {
         downloadFile(file.id)
+    };
+    div.onmouseenter = () => {
+        div.classList.add("selected")
+    };
+    div.onmouseleave = () => {
+        div.classList.remove("selected")
     };
   });
 }
