@@ -3,8 +3,8 @@ const explorer = document.getElementById("explorer");
 async function loadFolder(id = "root") {
   // const res = await fetch(`http://localhost:3000/api/folder/${id}`);
   //const res = await fetch(`${API_URL}/folder/root`);
-  const res = await fetch(`/api/folder/${id}`);
-
+  //const res = await fetch(`/api/folder/${id}`);
+  const res = await fetch(`https://storage-github-io.onrender.com/api/folder/${id}`)
   const data = await res.json();
 
   explorer.innerHTML = "";
@@ -73,12 +73,10 @@ async function loadFolder(id = "root") {
 function downloadFile(fileId) {
   //window.location.href = `${API_URL}/file/${fileId}/download`;
    // window.location.href = `http://localhost:3000/api/file/${fileId}/download`
-  window.open(`/api/file/${fileId}/download`, "_blank");
+  //window.open(`/api/file/${fileId}/download`, "_blank");
   //descargarArchivo(fileId)
+  window.location.href = `api/file/${fileId}/download`;
 }
-
-
-descargarArchivo();
 
 
 loadFolder();
