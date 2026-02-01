@@ -1,0 +1,62 @@
+const explorer = document.getElementById("explorer");
+const API_URL = "https://us-central1-tu-proyecto.cloudfunctions.net/api";
+
+async function loadFolder(id = "root") {
+  const res = await fetch(`http://localhost:3000/api/folder/${id}`);
+  //const res = await fetch(`${API_URL}/folder/root`);
+
+  const data = await res.json();
+
+  explorer.innerHTML = "";
+  
+  if(id != "root"){
+    const div = document.createElement("div");
+    div.className = "item folder";
+    div.innerHTML = `
+        <img src="public\\assets\\directory_open_cool-0.png" />
+        <span>..</span>
+    `;
+    if(id.parent_id == "NULL"){
+        div.onclick = () => loadFolder("root");
+    }
+    else{
+        div.onclick = () => loadFolder(id.parent_id);
+    }
+    
+    explorer.appendChild(div);
+  }
+
+  data.folders.forEach(folder => {
+    const div = document.createElement("div");
+    div.className = "item folder";
+    div.innerHTML = `
+      <img src="public\\assets\\directory_open_file_mydocs-5.png" />
+      <span>${folder.name}</span>
+    `;
+    div.onclick = () => loadFolder(folder.id);
+    explorer.appendChild(div);
+  });
+
+  data.files.forEach(file => {
+    const div = document.createElement("div");
+    div.className = "item file";
+    div.innerHTML = `
+      <img src="public\\assets\\font_bitmap-0.png" />
+      <span>${file.name}</span>
+    `;
+    explorer.appendChild(div);
+    div.ondblclick = () => {
+        downloadFile(file.id)
+    };
+  });
+}
+
+
+function downloadFile(fileId) {
+  //window.location.href = `${API_URL}/file/${fileId}/download`;
+    window.location.href = `http://localhost:3000/api/file/${fileId}/download`
+
+}
+
+
+loadFolder();
