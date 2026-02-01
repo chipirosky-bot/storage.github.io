@@ -1,5 +1,7 @@
 import { S3Client } from "@aws-sdk/client-s3";
 
+const AWS = require('aws-sdk');
+
 export const s3 = new S3Client({
   endpoint: "https://s3.filebase.com",
   region: "us-east-1",
@@ -8,3 +10,4 @@ export const s3 = new S3Client({
     secretAccessKey: process.env.FILEBASE_SECRET
   }
 });
+
