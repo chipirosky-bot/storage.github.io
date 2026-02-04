@@ -1,4 +1,8 @@
 const explorer = document.getElementById("explorer");
+let highestZ = 100;
+let offsetX = 0;
+let offsetY = 0;
+let draggingWindow = null;
 
 async function loadFolder(id = "root") {
   // const res = await fetch(`http://localhost:3000/api/folder/${id}`);
@@ -78,5 +82,69 @@ function downloadFile(fileId) {
   //window.location.href = `api/file/${fileId}/download`;
 }
 
+function closeWindow() {
+  const win = document.querySelector('.window');
+  //win.style.visibility = 'hidden';
+  win.style.opacity = 0;
+  setTimeout(() => win.style.display = 'none', 200);
+}
+
+function openWindow() {
+  const win = document.querySelector('.window');
+  win.style.display = 'block';
+  setTimeout(() => win.style.opacity = 1, 10);
+}
+
+function startDrag(e) {
+  const win = document.querySelector('.window');
+  //const win = document.getElementById(id);
+  draggingWindow = win;
+
+  //focusWindow(id);
+
+  offsetX = e.clientX - win.offsetLeft;
+  offsetY = e.clientY - win.offsetTop;
+
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('mouseup', stopDrag);
+}
+
+function drag(e) {
+  if (!draggingWindow) return;
+
+  draggingWindow.style.left = (e.clientX - offsetX) + 'px';
+  draggingWindow.style.top  = (e.clientY - offsetY) + 'px';
+}
+
+function stopDrag() {
+  draggingWindow = null;
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('mouseup', stopDrag);
+}
+
+
+/* 
+//multiple ventana
+
+function focusWindow() {
+  const win = document.querySelector('.window');
+  //const win = document.getElementById(id);
+
+  document.querySelectorAll('.window').forEach(w =>
+    w.classList.remove('active')
+  );
+
+  highestZ++;
+  win.style.zIndex = highestZ;
+  win.classList.add('active');
+}
+function closeWindow(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+function openWindow(id) {
+  document.getElementById(id).style.display = 'block';
+}
+*/
 
 loadFolder();

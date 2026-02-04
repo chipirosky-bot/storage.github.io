@@ -8,40 +8,46 @@
 </head>
 <body>
 <div class="main">
-    <!-- <div class="desktop-icons">
-        <div class="item folder">
-            <img src="assets\computer_explorer-4.png">
-            <span>LOGIN</span>
-        </div>
-        <div class="item folder">
-        <img src="assets\directory_open_cool-0.png">
-        <span>FOLDERS</span>
+  <div class="desktop-icons">
+      <div class="item folder">
+          <img src="assets\computer_explorer-4.png">
+          <span>LOGIN</span>
       </div>
-        <div class="item folder">
-            <img src="assets\recycle_bin_empty-4.png">
-            <span>RECYCLE BIN</span>
-        </div>
-    </div> -->
-    
-<div class="desktop">
-  <div class="window">
-    <div class="title-bar">
-      <span>My Computer</span>
+      <div class="item folder">
+      <img src="assets\directory_open_cool-0.png" onclick="openWindow()">
+      <span>FOLDERS</span>
     </div>
-
-    <div class="content" id="explorer">
-      <!-- <div class="item folder">
-        <img src="public\assets\directory_open_cool-0.png">
-        <span>empty</span>
+      <div class="item folder">
+          <img src="assets\recycle_bin_empty-4.png">
+          <span>RECYCLE BIN</span>
+      </div>
+  </div>
+    
+  <div class="desktop">
+    <div class="window">
+      <div class="title-bar" onmousedown="startDrag(event)">
+        <span>My Computer</span>
+        <button class="close-btn" onclick="closeWindow()">✕</button>
       </div>
 
-        <div class="item folder">
-          <img src="public\assets\directory_open_file_mydocs-5.png">
-          <span>no empty</span>
-      </div> -->
+      <div class="content" id="explorer">
+        <!-- <div class="item folder">
+          <img src="public\assets\directory_open_cool-0.png">
+          <span>empty</span>
+        </div>
+
+          <div class="item folder">
+            <img src="public\assets\directory_open_file_mydocs-5.png">
+            <span>no empty</span>
+        </div> -->
+      </div>
     </div>
   </div>
-</div>
+  <div class="taskbar">
+    <button onclick="openWindow('explorer-window')" class="start-btn">
+      <img src="assets/windows-0.png">Start
+    </button>
+  </div>
 </div>
 <script src="explorer.js"></script>
 </body>

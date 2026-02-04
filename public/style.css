@@ -13,6 +13,7 @@ html {
   overflow-x: hidden;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 body {
@@ -49,6 +50,12 @@ body {
   /* background: #c0c0c0; */
   background: white;
   border: 2px solid black;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.window.active {
+  z-index: 100;
 }
 
 /* .window {
@@ -94,13 +101,8 @@ body {
   cursor: pointer;
 }
 
-/* .item img {
-  width: 40px;
-  height: 40px;
-} */
-
 .item img {
-  width: 60px;   /* antes seguramente 32 */
+  width: 60px;   
   height: 60px;
   margin-bottom: 8px;
   /* image-rendering: pixelated;  */
@@ -120,12 +122,99 @@ body {
   color: white;
 }
 
+.title-bar {
+  background: navy;
+  color: white;
+  padding: 4px;
+  font-size: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  width: 18px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 1px solid black;
+  font-weight: bold;
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0;
+  cursor: pointer;
+
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #000;
+}
+
+.close-btn:active {
+  box-shadow:
+    inset -1px -1px 0 #fff,
+    inset 1px 1px 0 #000;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 20x;
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+
+  z-index: 200;
+}
+
+.taskbar button {
+  background: #c0c0c0;
+  border: 1px solid black;
+  padding: 4px 8px;
+  font-family: Tahoma, sans-serif;
+  cursor: pointer;
+  width: 60px;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #000;
+}
+
+.start-btn {
+  width: 28px;
+  height: 26px;
+  padding: 0;
+  background: #c0c0c0;
+  border: 1px solid black;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #000;
+}
+
+
+.start-btn img {
+  width: 16px;
+  height: 16px;
+}
+
 @media screen and (max-width: 768px) {
   .window {
     position: fixed;
     inset: 0;
-    width: 95vw;
-    height: 95vh;
+    width: 100vw;
+    height: 100vh;
     border-radius: 0;
     overflow-y: auto;
   }
@@ -148,5 +237,9 @@ body {
 
   .item span {
     font-size: 18px;
+  }
+
+   .taskbar {
+    display: none;
   }
 } 
