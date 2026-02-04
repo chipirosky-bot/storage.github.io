@@ -26,11 +26,22 @@ body {
   width: 100vw;
   height: 100vh;
   background: #008080;
-
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.desktop-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 
 .window {
   width: 65vw;
@@ -57,8 +68,8 @@ body {
 .title-bar {
   background: navy;
   color: white;
-  padding: 4px;
-  font-size: 14px;
+  padding: 8px;
+  font-size: 20px;
 }
 
 .toolbar {
@@ -108,3 +119,34 @@ body {
   background: #000080;
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .window {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    overflow-y: auto;
+  }
+
+  #explorer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 40px; 
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    overflow-y: auto;
+  }
+
+  .item img {
+    width: 80px;   
+    height: 80px;
+  }
+
+  .item span {
+    font-size: 18px;
+  }
+} 
