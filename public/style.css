@@ -23,6 +23,15 @@ body {
   padding: 0;
 }
 
+span{
+  font-family: Tahoma, sans-serif;
+}
+
+.span-fondo {
+  font-weight: bold;
+  color: white;
+}
+
 .desktop {
   width: 100vw;
   height: 100vh;
@@ -237,6 +246,7 @@ body {
 
   .item span {
     font-size: 18px;
+    
   }
 
    .taskbar {
