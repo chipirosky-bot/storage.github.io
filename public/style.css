@@ -189,15 +189,30 @@ span{
   padding: 4px 8px;
   font-family: Tahoma, sans-serif;
   cursor: pointer;
-  width: 60px;
+  width: max-content;
+  height: max-content;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    inset -1px -1px 0 #000;
+}
+
+.task-btn {
+  padding: 0;
+  background: #c0c0c0;
+  border: 1px solid black;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   box-shadow:
     inset 1px 1px 0 #fff,
     inset -1px -1px 0 #000;
 }
 
 .start-btn {
-  width: 28px;
-  height: 26px;
+  
   padding: 0;
   background: #c0c0c0;
   border: 1px solid black;

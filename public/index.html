@@ -9,15 +9,15 @@
 <body>
 <div class="main">
   <div class="desktop-icons">
-      <div class="item folder">
+      <div class="item folder" id="compu" onmouseenter="selectedFolder('compu', true)" onmouseout="selectedFolder('compu', false)">
           <img src="assets\computer_explorer-4.png">
           <span class="span-fondo">LOGIN</span>
       </div>
-      <div class="item folder">
+      <div class="item folder" id="folder" onmouseenter="selectedFolder('folder', true)" onmouseout="selectedFolder('folder', false)">
       <img src="assets\directory_open_cool-0.png" onclick="openWindow()">
       <span class="span-fondo">FOLDERS</span>
     </div>
-      <div class="item folder">
+      <div class="item folder" id="bin" onmouseenter="selectedFolder('bin', true)" onmouseout="selectedFolder('bin', false)">
           <img src="assets\recycle_bin_empty-4.png">
           <span class="span-fondo">RECYCLE BIN</span>
       </div>
@@ -27,7 +27,12 @@
     <div class="window">
       <div class="title-bar" onmousedown="startDrag(event)">
         <span>My Computer</span>
+        <div style="justify-content: right;">
+        <button class="close-btn" onclick="minimizeWindow()">_</button>
+        <button class="close-btn" onclick="maximizeWindow()">▢</button>
         <button class="close-btn" onclick="closeWindow()">✕</button>
+        </div>
+        
       </div>
 
       <div class="content" id="explorer">
@@ -44,9 +49,15 @@
     </div>
   </div>
   <div class="taskbar">
-    <button onclick="openWindow('explorer-window')" class="start-btn">
+    <button class="start-btn">
       <img src="assets/windows-0.png">Start
     </button>
+     <button
+      class="task-btn"
+      id="explorer-task"
+      onclick="toggleWindow()">
+    Folders
+  </button>
   </div>
 </div>
 <script src="explorer.js"></script>
